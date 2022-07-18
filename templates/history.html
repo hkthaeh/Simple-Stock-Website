@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Date</th>
+                <th class="text-start">Time</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td class="text-start">{{ result.ticker }}</td>
+                <td class="text-start">{{ result.date }}</td>
+                <td class="text-start">{{ result.time }}</td>
+                <td class="text-end">{{ result.shares }}</td>
+                <td class="text-end">{{ result.price | usd }}</td>
+                <td class="text-end">Bought</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <ffoot>
+            {% for sale in sales %}
+            <tr>
+                <td class="text-start">{{ sale.ticker }}</td>
+                <td class="text-start">{{ sale.date }}</td>
+                <td class="text-start">{{ sale.time }}</td>
+                <td class="text-end">{{ sale.shares }}</td>
+                <td class="text-end">{{ sale.price | usd }}</td>
+                <td class="text-end">Sold</td>
+            </tr>
+            {% endfor %}
+        </ffoot>
+    </table>
+{% endblock %}
