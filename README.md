@@ -1,7 +1,7 @@
 # Simple-Stock-Website
 Basic stock website that lets you create an account with hash password, buy and sell stocks
 
-Made with: HTML, CSS, Bootstrap, Jinja, Python, Flask
+Made with: HTML, CSS, Bootstrap, Jinja, Python, Flask, SQLite3
 
 Input in terminal:
 
