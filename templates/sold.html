@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sold
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Ticker</th>
+                <th class="text-start">Name</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Remaining Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-start">{{ ticker }}</td>
+                <td class="text-start">{{ name }}</td>
+                <td class="text-end">{{ shares }}</td>
+                <td class="text-end">{{ price }}</td>
+                <td class="text-end">{{ total }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

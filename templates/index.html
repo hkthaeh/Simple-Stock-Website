@@ -22,18 +22,18 @@
                 <td class="text-start">{{ result.name }}</td>
                 <td class="text-end">{{ result.shares }}</td>
                 <td class="text-end">{{ result.price | usd }}</td>
-                <td class="text-end">{{ result.shares * result.price | usd }}</td>
+                <td class="text-end">{{ (result.shares * result.price) | usd }}</td>
             </tr>
             {% endfor %}
         </tbody>
         <ffoot>
             <tr>
                 <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
-                <td class="border-0 text-end">{{ cash }}</td>
+                <td class="border-0 text-end">{{ cash | usd }}</td>
             </tr>
             <tr>
                 <td class="border-0 fw-bold text-end" colspan="4">Total</td>
-                <td class="border-0 w-bold text-end">{{ profile }}</td>
+                <td class="border-0 w-bold text-end">{{ profile | usd }}</td>
             </tr>
         </ffoot>
     </table>
