@@ -132,17 +132,26 @@ def buy():
             return apology("Please input a positive number of shares")
         elif len(ticker) > 5:
             return apology("Ticker cannot be more than 5 letters")
-
+        
+        # Check if valid ticker
         if lookup(ticker) == None:
             return apology("Not a valid ticker")
+        
+        # Grab information from IEX Exchange
         else:
             result = lookup(ticker)
             price = result["price"]
-        name = result["name"]
+            name = result["name"]
+        
+        # Check if user has enough money to purchase stock
         if price * int(shares) > int(amount):
             return apology("You do not have enough $$ to buy that")
+        
+        # Update the amount of cash the user has remaining in SQL database
         final = amount - (price * int(shares))
         remaining = db.execute("UPDATE users SET cash = ? WHERE id = ?", final, session["user_id"])
+        
+        # Input purchase information into SQL database
         db.execute("INSERT INTO purchases (id, ticker, shares, price, date, time) VALUES(?, ?, ?, ?, ?, ?)",
         session["user_id"], ticker.upper(), shares, price, date, time)
 
@@ -157,9 +166,11 @@ def buy():
 def history():
     """Show history of transactions"""
 
+    # Grab information from SQL database
     results = db.execute("SELECT * FROM purchases WHERE id = ?", session['user_id'])
     sales = db.execute("SELECT * FROM sales WHERE id = ?", session['user_id'])
 
+    # Generate history of all sales and purchases the user made
     return render_template("history.html", results=results, sales=sales)
 
 
@@ -225,8 +236,11 @@ def quote():
         elif len(ticker) > 5:
             return apology("Not a valid ticker symbol, needs to be less than 5 letters")
 
+        # Check if the ticker is valid
         if lookup(ticker) == None:
             return apology("Not a valid ticker")
+        
+        # Grab ticker information on IEX Exchange
         else:
             result = lookup(ticker)
             name = result["name"]
