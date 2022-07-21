@@ -217,21 +217,21 @@ def quote():
 
     if request.method == "POST":
 
-    ticker = request.form.get("symbol")
+        ticker = request.form.get("symbol")
 
-    # Checks if user inputed a valid ticker
-    if not ticker:
-        return apology("Please enter a Stock ticker symbol")
-    elif len(ticker) > 5:
-        return apology("Not a valid ticker symbol, needs to be less than 5 letters")
+        # Checks if user inputed a valid ticker
+        if not ticker:
+            return apology("Please enter a Stock ticker symbol")
+        elif len(ticker) > 5:
+            return apology("Not a valid ticker symbol, needs to be less than 5 letters")
 
-    if lookup(ticker) == None:
-        return apology("Not a valid ticker")
-    else:
-        result = lookup(ticker)
-        name = result["name"]
-        price = result["price"]
-        symbol = result["symbol"]
+        if lookup(ticker) == None:
+            return apology("Not a valid ticker")
+        else:
+            result = lookup(ticker)
+            name = result["name"]
+            price = result["price"]
+            symbol = result["symbol"]
 
         # Generate page that tells you basic information about the ticker inputed
         return render_template("quoted.html", name=name, price=price, symbol=symbol)
@@ -276,7 +276,7 @@ def register():
 
     # Brings user to register page
     else:
-    return render_template("register.html")
+        return render_template("register.html")
 
 
 @app.route("/sell", methods=["GET", "POST"])
