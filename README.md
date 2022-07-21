@@ -8,3 +8,9 @@ Input in terminal:
 export API_KEY=pk_2d1f08eafd6b4ed98d49da8d90cbd89d
 
 to get quotes from IEX Exchange
+
+and then:
+
+flask run
+
+to run the flask application
