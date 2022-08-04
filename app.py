@@ -322,7 +322,7 @@ def sell():
 
     # Combine the two dictionaries, purchase - sales, and put it into a dictionary
     if sales_symbols == {}:
-        finals = sales_symbols
+        finals = purchase_symbols
     else:
         for key, value in purchase_symbols.items():
             for k, v in sales_symbols.items():
