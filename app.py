@@ -328,7 +328,7 @@ def sell():
             for k, v in sales_symbols.items():
                 if key in sales_symbols:
                     finals[key] = value - v
-                    if finals[key] == 0:
+                    if finals[key] <= 0:
                         finals.pop(key)
                     break
                 finals[key] = value
@@ -338,13 +338,23 @@ def sell():
         ticker = request.form.get("symbol")
 
         # Grab stock information from exchange
-        exchange = lookup(ticker)
-        name = exchange['name']
-        price = exchange['price']
+        try:
+            exchange = lookup(ticker)
+            name = exchange['name']
+            price = exchange['price']
+        except:
+            if finals == {}:
+                return apology("Please purchase some stocks to sell")
+            else:
+                return apology("Please select a stock to sell")
         ticker = ticker.upper()
 
         # Grabs the number of shares the user wants to sell
-        amount = int(request.form.get("amount"))
+        try:
+            amount = int(request.form.get("amount"))
+        except ValueError:
+            return apology("Please enter amount of share(s) to sell")
+
         if not amount:
             return apology("Please input the amount of shares you want to sell")
         elif amount < 0:
