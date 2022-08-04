@@ -351,7 +351,7 @@ def sell():
             return apology("Please enter in a positive value")
 
         # Grab user data from SQL database on the specific stock the user wants to sell
-        selected = db.execute("SELECT shares FROM purchases WHERE ticker = ? AND id = ?", ticker, session['user_id')
+        selected = db.execute("SELECT shares FROM purchases WHERE ticker = ? AND id = ?", ticker, session['user_id'])
 
         # Iterates through the number of shares of stocks the user has
         for k in range(len(selected)):
