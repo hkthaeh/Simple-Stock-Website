@@ -328,6 +328,8 @@ def sell():
             for k, v in sales_symbols.items():
                 if key in sales_symbols:
                     finals[key] = value - v
+                    if finals[key] == 0:
+                        finals.pop(key)
                     break
                 finals[key] = value
 
