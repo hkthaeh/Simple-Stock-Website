@@ -321,12 +321,15 @@ def sell():
         sales_symbols[sales[j]['ticker']] = sales[j]['shares']
 
     # Combine the two dictionaries, purchase - sales, and put it into a dictionary
-    for key, value in purchase_symbols.items():
-        for k, v in sales_symbols.items():
-            if key in sales_symbols:
-                finals[key] = value - v
-                break
-            finals[key] = value
+    if sales_symbols == {}:
+        finals = sales_symbols
+    else:
+        for key, value in purchase_symbols.items():
+            for k, v in sales_symbols.items():
+                if key in sales_symbols:
+                    finals[key] = value - v
+                    break
+                finals[key] = value
 
     # If user wants to sell specific stock
     if request.method == "POST":
@@ -346,7 +349,7 @@ def sell():
             return apology("Please enter in a positive value")
 
         # Grab user data from SQL database on the specific stock the user wants to sell
-        selected = db.execute("SELECT shares FROM purchases WHERE ticker = ?", ticker)
+        selected = db.execute("SELECT shares FROM purchases WHERE ticker = ? AND id = ?", ticker, session['user_id')
 
         # Iterates through the number of shares of stocks the user has
         for k in range(len(selected)):
