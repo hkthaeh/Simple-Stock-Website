@@ -21,6 +21,7 @@ to run the flask application
 
 
 15 August, 2022 update
+
 Added some JavaScript 
 
   -tracks how many times the user click on a link locally
