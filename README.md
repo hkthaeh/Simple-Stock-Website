@@ -1,7 +1,7 @@
 # Simple-Stock-Website
 Basic stock website that lets you create an account with hash password, buy and sell stocks
 
-Made with: HTML, CSS, Bootstrap, Jinja, Python, Flask, SQLite3
+Made with: HTML, CSS, Bootstrap, Jinja, Python, Flask, SQLite3, JavaScript
 
 Input in terminal:
 
@@ -18,3 +18,11 @@ flask run
 <img width="498" alt="s" src="https://user-images.githubusercontent.com/100101063/180110601-34af5a74-8e75-4748-9e5d-6694ae20a4aa.png">
 
 to run the flask application
+
+
+15 August, 2022 update
+Added some JavaScript 
+
+  -tracks how many times the user click on a link locally
+
+<img width="218" alt="t" src="https://user-images.githubusercontent.com/100101063/184733715-e1554679-ed07-4866-b561-27b751a37dc9.png">
