@@ -27,3 +27,5 @@ Added some JavaScript
   -tracks how many times the user click on a link locally
 
 <img width="218" alt="t" src="https://user-images.githubusercontent.com/100101063/184733715-e1554679-ed07-4866-b561-27b751a37dc9.png">
+
+Added clickable purchases/sales buttons on the History page to separate the stock that were bought/sold
