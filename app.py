@@ -173,6 +173,28 @@ def history():
     # Generate history of all sales and purchases the user made
     return render_template("history.html", results=results, sales=sales)
 
+@app.route("/purchases")
+@login_required
+def purchases():
+    """Show history of transactions"""
+
+    # Grab information from SQL database
+    results = db.execute("SELECT * FROM purchases WHERE id = ?", session['user_id'])
+
+    # Generate history of all sales and purchases the user made
+    return render_template("purchases.html", results=results)
+
+@app.route("/sales")
+@login_required
+def sales():
+    """Show history of transactions"""
+
+    # Grab information from SQL database
+    sales = db.execute("SELECT * FROM sales WHERE id = ?", session['user_id'])
+
+    # Generate history of all sales and purchases the user made
+    return render_template("sales.html", sales=sales)
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
